@@ -18,11 +18,10 @@ public class UserController {
     @Autowired
     public UserController(UserService userService) {
         this.userService = userService;
-
     }
 
     @GetMapping()
-    public String onlyForUser (Principal principal,ModelMap model) {
+    public String onlyForUser(Principal principal, ModelMap model) {
         User user = userService.findByName(principal.getName());
         model.addAttribute("user", user);
         return "view_for_user";
